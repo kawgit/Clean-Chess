@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Electron MWE</title>
+    <script src="lib/jquery/jquery.min.js"></script>
+    <script src="lib/chessboardjs/chessboard-1.0.0.min.js"></script>
+    <link rel="stylesheet" href="lib/chessboardjs/chessboard-1.0.0.min.css" />
+    <script src="lib/bundle.js"></script>
+  </head>
+
+  <body>
+    <h1>Hello, World!</h1>
+    <p>This is a minimal working example of my new chess UI.</p>
+
+    <div id="myBoard" style="width: 400px"></div>
+    <button id="startBtn">Start Position</button>
+    <button id="clearBtn">Clear Board</button>
+    <button id="goBtn">Go</button>
+
+    <script>
+      let board = new Chessboard("myBoard", {
+        draggable: true,
+        dropOffBoard: "trash",
+        sparePieces: true,
+      });
+
+      $("#startBtn").on("click", board.start);
+      $("#clearBtn").on("click", board.clear);
+      $("#goBtn").on("click", async function () {
+        let state = new State();
+        board.start();
+
+        while (!state.isGameOver()) {
+          const moves = state.moves({ verbose: true });
+          const move = moves[Math.floor(Math.random() * moves.length)];
+          state.move(move);
+          if (
+            move.flags.includes("e") ||
+            move.flags.includes("p") ||
+            move.flags.includes("k") ||
+            move.flags.includes("q")
+          ) {
+            board.move(`${move.from}-${move.to}`);
+            board.position(move.after, false);
+          } else {
+            board.move(`${move.from}-${move.to}`);
+          }
+          await sleep(100);
+        }
+      });
+    </script>
+  </body>
+</html>
