@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Electron MWE</title>
+    <script src="lib/jquery/jquery.min.js"></script>
+    <script src="lib/chessboardjs/chessboard-1.0.0.min.js"></script>
+    <link rel="stylesheet" href="lib/chessboardjs/chessboard-1.0.0.min.css" />
+    <script src="lib/bundle.js"></script>
+  </head>
+
+  <body>
+    <h1>Hello, World!</h1>
+    <p>This is a minimal working example of my new chess UI.</p>
+
+    <div id="myBoard" style="width: 400px"></div>
+    <button id="startBtn">Start Position</button>
+    <button id="clearBtn">Clear Board</button>
+    <button id="goBtn">Go</button>
+
+    <br>
+
+    <code id="console-log" type="text" style="white-space: pre; overflow-x: auto; display: block;"></code>
+    <input id="console-input" type="text"></input>
+    <button id="console-submit" onclick="consoleSubmit()">Enter</button>
+
+    <script type="module" src="lib/agent.mjs"></script>
+    <script type="module" src="renderer.mjs"></script>
+  </body>
+</html>
