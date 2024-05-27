@@ -18,15 +18,15 @@
     <button id="goBtn">Go</button>
 
     <script>
-      let board = new Chessboard("myBoard", {
+      let board = new Chessboard('myBoard', {
         draggable: true,
-        dropOffBoard: "trash",
+        dropOffBoard: 'trash',
         sparePieces: true,
       });
 
-      $("#startBtn").on("click", board.start);
-      $("#clearBtn").on("click", board.clear);
-      $("#goBtn").on("click", async function () {
+      $('#startBtn').on('click', board.start);
+      $('#clearBtn').on('click', board.clear);
+      $('#goBtn').on('click', async function () {
         let state = new State();
         board.start();
 
@@ -35,10 +35,10 @@
           const move = moves[Math.floor(Math.random() * moves.length)];
           state.move(move);
           if (
-            move.flags.includes("e") ||
-            move.flags.includes("p") ||
-            move.flags.includes("k") ||
-            move.flags.includes("q")
+            move.flags.includes('e') ||
+            move.flags.includes('p') ||
+            move.flags.includes('k') ||
+            move.flags.includes('q')
           ) {
             board.move(`${move.from}-${move.to}`);
             board.position(move.after, false);

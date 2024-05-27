@@ -1,4 +1,4 @@
-const { app, BrowserWindow } = require("electron");
+import { app, BrowserWindow } from 'electron';
 
 app.whenReady().then(() => {
   const win = new BrowserWindow({
@@ -6,5 +6,5 @@ app.whenReady().then(() => {
     height: 600,
   });
 
-  win.loadFile("src/index.html");
+  win.loadFile('src/index.html');
 });

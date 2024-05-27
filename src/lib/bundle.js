@@ -20,16 +20,6 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpac
 
 /***/ }),
 
-/***/ "./src/load_modules.js":
-/*!*****************************!*\
-  !*** ./src/load_modules.js ***!
-  \*****************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var chess_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! chess.js */ \"./node_modules/chess.js/dist/esm/chess.js\");\n/* harmony import */ var sleep_promise__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! sleep-promise */ \"./node_modules/sleep-promise/build/esm.mjs\");\n\n\n\nwindow.State = chess_js__WEBPACK_IMPORTED_MODULE_0__.Chess;\nwindow.sleep = sleep_promise__WEBPACK_IMPORTED_MODULE_1__[\"default\"];\n\n\n//# sourceURL=webpack://scope/./src/load_modules.js?");
-
-/***/ }),
-
 /***/ "./node_modules/sleep-promise/build/esm.mjs":
 /*!**************************************************!*\
   !*** ./node_modules/sleep-promise/build/esm.mjs ***!
@@ -37,6 +27,16 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var ches
 /***/ ((__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) => {
 
 eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (__WEBPACK_DEFAULT_EXPORT__)\n/* harmony export */ });\nvar e=setTimeout;function t(t,n){var u=n.useCachedSetTimeout?e:setTimeout;return new Promise((function(e){u(e,t)}))}function n(e){var n=arguments.length>1&&void 0!==arguments[1]?arguments[1]:{},u=n.useCachedSetTimeout,r=t(e,{useCachedSetTimeout:u});function o(e){return r.then((function(){return e}))}return o.then=function(){return r.then.apply(r,arguments)},o.catch=Promise.resolve().catch,o}/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (n);\n\n\n//# sourceURL=webpack://scope/./node_modules/sleep-promise/build/esm.mjs?");
+
+/***/ }),
+
+/***/ "./src/load_modules.js":
+/*!*****************************!*\
+  !*** ./src/load_modules.js ***!
+  \*****************************/
+/***/ ((__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) => {
+
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var chess_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! chess.js */ \"./node_modules/chess.js/dist/esm/chess.js\");\n/* harmony import */ var sleep_promise__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! sleep-promise */ \"./node_modules/sleep-promise/build/esm.mjs\");\n\n\n\nwindow.State = chess_js__WEBPACK_IMPORTED_MODULE_0__.Chess;\nwindow.sleep = sleep_promise__WEBPACK_IMPORTED_MODULE_1__[\"default\"];\n\n\n//# sourceURL=webpack://scope/./src/load_modules.js?");
 
 /***/ })
 

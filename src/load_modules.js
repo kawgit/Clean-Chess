@@ -1,5 +1,5 @@
-import { Chess } from "chess.js";
-import sleep from "sleep-promise";
+import { Chess } from 'chess.js';
+import sleep from 'sleep-promise';
 
 window.State = Chess;
 window.sleep = sleep;
