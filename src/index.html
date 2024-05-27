@@ -24,6 +24,10 @@
         sparePieces: true,
       });
 
+      document.addEventListener('DOMContentLoaded', () => {
+        setTimeout(board.start, 400);
+      });
+
       $('#startBtn').on('click', board.start);
       $('#clearBtn').on('click', board.clear);
       $('#goBtn').on('click', async function () {

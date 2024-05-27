@@ -30,13 +30,13 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpac
 
 /***/ }),
 
-/***/ "./src/load_modules.js":
-/*!*****************************!*\
-  !*** ./src/load_modules.js ***!
-  \*****************************/
+/***/ "./src/load_modules.mjs":
+/*!******************************!*\
+  !*** ./src/load_modules.mjs ***!
+  \******************************/
 /***/ ((__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) => {
 
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var chess_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! chess.js */ \"./node_modules/chess.js/dist/esm/chess.js\");\n/* harmony import */ var sleep_promise__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! sleep-promise */ \"./node_modules/sleep-promise/build/esm.mjs\");\n\n\n\nwindow.State = chess_js__WEBPACK_IMPORTED_MODULE_0__.Chess;\nwindow.sleep = sleep_promise__WEBPACK_IMPORTED_MODULE_1__[\"default\"];\n\n\n//# sourceURL=webpack://scope/./src/load_modules.js?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var chess_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! chess.js */ \"./node_modules/chess.js/dist/esm/chess.js\");\n/* harmony import */ var sleep_promise__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! sleep-promise */ \"./node_modules/sleep-promise/build/esm.mjs\");\n\n\n\nwindow.State = chess_js__WEBPACK_IMPORTED_MODULE_0__.Chess;\nwindow.sleep = sleep_promise__WEBPACK_IMPORTED_MODULE_1__[\"default\"];\n\n\n//# sourceURL=webpack://scope/./src/load_modules.mjs?");
 
 /***/ })
 
@@ -100,7 +100,7 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var ches
 /******/ 	// startup
 /******/ 	// Load entry module and return exports
 /******/ 	// This entry module can't be inlined because the eval devtool is used.
-/******/ 	var __webpack_exports__ = __webpack_require__("./src/load_modules.js");
+/******/ 	var __webpack_exports__ = __webpack_require__("./src/load_modules.mjs");
 /******/ 	
 /******/ })()
 ;
