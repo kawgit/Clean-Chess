@@ -1,3 +1,5 @@
+import { Agent, Dummy } from './lib/agent.mjs';
+
 let board = new Chessboard('myBoard', {
   draggable: true,
   dropOffBoard: 'trash',
@@ -16,9 +18,14 @@ $('#goBtn').on('click', async function () {
   let state = new State();
   board.start();
 
+  let agent0 = new Dummy('Random Player 0');
+  let agent1 = new Dummy('Random Player 1');
+
   while (!state.isGameOver()) {
-    const moves = state.moves({ verbose: true });
-    const move = moves[Math.floor(Math.random() * moves.length)];
+    console.log(state.turn());
+    const move = await (state.turn() == 'w'
+      ? agent0.go(state)
+      : agent1.go(state));
     state.move(move);
     if (
       move.flags.includes('e') ||
@@ -32,6 +39,5 @@ $('#goBtn').on('click', async function () {
       board.move(`${move.from}-${move.to}`);
     }
     await sleep(100);
-    window.api.send(state.fen());
   }
 });
