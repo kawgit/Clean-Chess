@@ -1,4 +1,4 @@
-import { Agent, Dummy } from './lib/agent.mjs';
+import { Agent, Dummy, Engine } from './lib/agent.mjs';
 
 let board = new Chessboard('myBoard', {
   draggable: true,
@@ -19,7 +19,7 @@ $('#goBtn').on('click', async function () {
   board.start();
 
   let agent0 = new Dummy('Random Player 0');
-  let agent1 = new Dummy('Random Player 1');
+  let agent1 = new Engine('Random Player 1', window.api);
 
   while (!state.isGameOver()) {
     console.log(state.turn());
