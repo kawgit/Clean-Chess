@@ -1,4 +1,5 @@
-import { Agent, Dummy, Engine } from './lib/agent.mjs';
+import { Dummy, Engine } from './lib/agent.mjs';
+import { Game } from './lib/game.mjs';
 
 let board = new Chessboard('myBoard', {
   draggable: true,
@@ -15,29 +16,13 @@ document.addEventListener('DOMContentLoaded', () => {
 $('#startBtn').on('click', board.start);
 $('#clearBtn').on('click', board.clear);
 $('#goBtn').on('click', async function () {
-  let state = new State();
-  board.start();
-
   let agent0 = new Dummy('Random Player 0');
   let agent1 = new Engine('Random Player 1', window.api);
 
-  while (!state.isGameOver()) {
-    console.log(state.turn());
-    const move = await (state.turn() == 'w'
-      ? agent0.go(state)
-      : agent1.go(state));
-    state.move(move);
-    if (
-      move.flags.includes('e') ||
-      move.flags.includes('p') ||
-      move.flags.includes('k') ||
-      move.flags.includes('q')
-    ) {
-      board.move(`${move.from}-${move.to}`);
-      board.position(move.after, false);
-    } else {
-      board.move(`${move.from}-${move.to}`);
-    }
-    await sleep(100);
+  let game = new Game(agent0, agent1, 'myBoard');
+
+  while (!game.state.isGameOver()) {
+    console.log(game.state.fen());
+    await game.go();
   }
 });
