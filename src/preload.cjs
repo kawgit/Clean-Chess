@@ -1,10 +1,16 @@
 const { contextBridge, ipcRenderer } = require('electron');
 
+let currentCallback = (message) => {};
+
+ipcRenderer.on('mainchannel', (event, response) => {
+  currentCallback(response);
+});
+
 contextBridge.exposeInMainWorld('api', {
   send: (message) => {
     ipcRenderer.send('mainchannel', message);
   },
-  onrecieve: (callback) => {
-    ipcRenderer.on('mainchannel', (event, response) => callback(response));
+  setCallback: (callback) => {
+    currentCallback = callback;
   },
 });

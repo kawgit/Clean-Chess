@@ -13,28 +13,28 @@ export class Game {
     this.state = new State();
   }
 
-  do(move) {
-    this.state.move(move);
+  async do(move) {
+    const moveInfo = this.state.move(move);
 
     if (this.board == null) return;
 
     if (
-      move.flags.includes('e') ||
-      move.flags.includes('p') ||
-      move.flags.includes('k') ||
-      move.flags.includes('q')
+      moveInfo.flags.includes('e') ||
+      moveInfo.flags.includes('p') ||
+      moveInfo.flags.includes('k') ||
+      moveInfo.flags.includes('q')
     ) {
-      this.board.move(`${move.from}-${move.to}`);
-      this.board.position(move.after, false);
+      await this.board.move(`${moveInfo.from}-${moveInfo.to}`);
+      await this.board.position(moveInfo.after, false);
     } else {
-      this.board.move(`${move.from}-${move.to}`);
+      await this.board.move(`${moveInfo.from}-${moveInfo.to}`);
     }
   }
 
   async go() {
     const move = await (this.state.turn() == 'w'
-      ? this.agent0.go(this.state, 100)
-      : this.agent1.go(this.state, 300));
+      ? this.agent0.go(this.state, 700)
+      : this.agent1.go(this.state, 1600));
     this.do(move);
   }
 }
