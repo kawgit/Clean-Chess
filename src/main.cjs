@@ -1,5 +1,7 @@
 const { app, BrowserWindow, ipcMain } = require('electron');
+const { spawn } = require('child_process');
 const path = require('path');
+
 app.on('ready', () => {
   const win = new BrowserWindow({
     width: 800,
@@ -11,9 +13,16 @@ app.on('ready', () => {
   });
 
   win.loadFile(path.join(__dirname, 'index.html'));
-});
 
-ipcMain.on('mainchannel', (event, arg) => {
-  console.log(new Date(), 'Command received from frontend:', arg);
-  // event.reply('mainchannel', 'Command processed successfully');
+  const engine = spawn(`src/engines/torch`);
+
+  engine.stdout.on('data', (data) => {
+    console.log(data.toString());
+    win.webContents.send('mainchannel', data.toString());
+  });
+
+  ipcMain.on('mainchannel', (event, message) => {
+    console.log(message);
+    engine.stdin.write(message);
+  });
 });
